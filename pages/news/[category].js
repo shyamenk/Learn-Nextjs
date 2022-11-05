@@ -17,7 +17,10 @@ const articlesByCategory = ({articles, category}) => {
 
 export default articlesByCategory
 
-export const getServerSideProps = async ({params}) => {
+export const getServerSideProps = async context => {
+  const {req, res, query, params} = context
+
+  console.log(query)
   const response = await fetch(
     `http://localhost:4000/news?category=${params.category}`,
   )
